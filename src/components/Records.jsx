@@ -4,29 +4,31 @@ import { useState } from "react";
 function Records({ stats }) {
   const newArr = [...stats];
   const [sortBy, setSortBy] = useState(newArr);
-  const [sortOrder, setSortOrder] = useState(true);
+  const [trialsSortOrder, setTrialsSortOrder] = useState(true);
+  const [timeSortOrder, setTimeSortOrder] = useState(true);
 
   function sortByTrials() {
-    setSortBy([
-      ...sortBy.sort((a, b) => {
-        setSortOrder(pre=>!pre);
-         return sortOrder ?  a.trials - b.trials :  b.trials - a.trials;
-      }),
-    ]);
+    setSortBy(
+      [...sortBy].sort((a, b) => {
+        setTrialsSortOrder((pre) => !pre);
+        return trialsSortOrder ? a.trials - b.trials : b.trials - a.trials;
+      })
+    );
   }
   function sortByTime() {
-    setSortBy([
-      ...sortBy.sort((a, b) => {
-        setSortOrder(pre=>!pre);
-        return sortOrder ? a.time - b.time : b.time - a.time;
-      }),
-    ]);
+    setSortBy(
+      [...sortBy].sort((a, b) => {
+        setTimeSortOrder((pre) => !pre);
+        return timeSortOrder ? a.time - b.time : b.time - a.time;
+      })
+    );
   }
 
   return (
     <div className="relative overflow-y-scroll w-[400px] shadow-md sm:rounded-lg mt-8 h-[200px] scrollbar-thin scrollbar-thumb-gray-600 scrollbar-thumb-rounded">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <caption className="font-bold bg-gray-500 text-white">Last results</caption>
+
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" className="px-6 py-3">
