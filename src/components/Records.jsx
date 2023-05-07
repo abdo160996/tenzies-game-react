@@ -9,7 +9,7 @@ function Records({ stats }) {
   function sortByTrials() {
     setSortBy([
       ...sortBy.sort((a, b) => {
-        setSortOrder(!sortOrder);
+        setSortOrder(pre=>!pre);
          return sortOrder ?  a.trials - b.trials :  b.trials - a.trials;
       }),
     ]);
@@ -17,7 +17,7 @@ function Records({ stats }) {
   function sortByTime() {
     setSortBy([
       ...sortBy.sort((a, b) => {
-        setSortOrder(!sortOrder);
+        setSortOrder(pre=>!pre);
         return sortOrder ? a.time - b.time : b.time - a.time;
       }),
     ]);

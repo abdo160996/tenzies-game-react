@@ -111,9 +111,9 @@ function App() {
           </button>
         )}
 
-        <ToggleBtn btnText={"Nums mode"} handleChange={() => setNumbersMod((pre) => !pre)} />
+        <ToggleBtn btnText={"Nums mode"} handleChange={() => setNumbersMod(pre => !pre)} />
 
-        <ToggleBtn btnText={"Switch theme"} handleChange={() => setDarkMode((pre) => !pre)} />
+        <ToggleBtn btnText={"Switch theme"} handleChange={() => setDarkMode(pre => !pre)} />
       </div>
       {tenzi && <Records stats={stats} />}
     </main>
