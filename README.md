@@ -1,9 +1,11 @@
 <h1 align="center">Welcome to tenzies-game 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.0.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
 </p>
 
-> tenzies game using react
+### 🏠 [Homepage](https://abdo160996.github.io/tenzies-game-react/)
+
+### ✨ [Demo](https://abdo160996.github.io/tenzies-game-react/)
 
 ## Install
 

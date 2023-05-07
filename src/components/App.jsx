@@ -13,6 +13,7 @@ function App() {
   const [tenzi, setTenzi] = useState(false);
   const [newGame, setNewGame] = useState(true);
   const [numbersMod, setNumbersMod] = useState(false);
+  const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMode")));
   const [timer, setTimer] = useState(0);
   const [stats, setStats] = useState(() => JSON.parse(localStorage.getItem("stats")) || []);
   const [intervalId, setIntervalId] = useState(0);
@@ -87,10 +88,17 @@ function App() {
     window.localStorage.setItem("stats", JSON.stringify(stats));
   }, [stats]);
 
+   useEffect(() => {
+    darkMode ? document.body.classList.add("dark") : document.body.classList.remove("dark");
+    localStorage.setItem("darkMode",darkMode)
+  }, [darkMode]);
+
   const dieElements = dice.map((die) => <Die key={die.id} die={die} freezeDice={freezeDice} numbersMod={numbersMod} newGame={newGame} tenzi={tenzi} />);
 
+ 
+
   return (
-    <main className="wrapper px-5 flex flex-col justify-center items-center h-screen dark:bg-gray-900">
+    <main className="wrapper px-5 bg-neutral-50 flex flex-col justify-center items-center h-screen dark:bg-gray-900">
       {tenzi && <Confetti width={window.innerWidth} height={window.innerHeight} />}
       <div className="card flex flex-col p-5 w-[400px]  rounded-md shadow-lg shadow-white-100 dark:bg-gray-800">
         <Info tenzi={tenzi} />
@@ -103,7 +111,9 @@ function App() {
           </button>
         )}
 
-        <ToggleBtn setNumbersMod={setNumbersMod} />
+        <ToggleBtn btnText={"Nums mode"} handleChange={() => setNumbersMod((pre) => !pre)} />
+
+        <ToggleBtn btnText={"Switch theme"} handleChange={() => setDarkMode((pre) => !pre)} />
       </div>
       {tenzi && <Records stats={stats} />}
     </main>
